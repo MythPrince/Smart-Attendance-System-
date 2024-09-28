@@ -1,8 +1,8 @@
-import recorded2, oldFiles.faceRecognition as faceRecognition
+import recorded2, program
 
-cmd = int(input("Press 1 for Live caputre \n \t OR \n Press 2 to caputre from recorded video" ))
+cmd = int(input("Press 1 for Live caputre \n \t OR \nPress 2 to caputre from recorded video"))
 
 if cmd == 1:
-    faceRecognition.func2()
+    program.access_time()
 else:
     recorded2.func1()
