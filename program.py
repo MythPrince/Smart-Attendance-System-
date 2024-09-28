@@ -159,22 +159,22 @@ def access_time():
     f.close()
 
 
+def main():
 
 
+    # Creating and starting threads
+    thread1 = threading.Thread(target=fetch_time)
+    thread2 = threading.Thread(target=access_time)
 
-# Creating and starting threads
-thread1 = threading.Thread(target=fetch_time)
-thread2 = threading.Thread(target=access_time)
-
-thread1.start()
-thread2.start()
+    thread1.start()
+    thread2.start()
 
 
-cmd = input("")
+    cmd = input("")
 
-if  cmd == "stop":
-    stop_event.set()
+    if  cmd == "stop":
+        stop_event.set()
 
-# Joining threads (optional, if you want the main program to wait for these threads to finish)
-thread1.join()
-thread2.join()
+    # Joining threads (optional, if you want the main program to wait for these threads to finish)
+    thread1.join()
+    thread2.join()
