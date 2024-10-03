@@ -70,8 +70,8 @@ now = datetime.now()
 curr_date = now.strftime("%Y-%m-%d")
 
 
-f = open(curr_date + '.csv','a', newline='')
-lnwriter = csv.writer(f)
+# f = open(curr_date + '.csv','a', newline='')
+# lnwriter = csv.writer(f)
 
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 
@@ -145,6 +145,9 @@ def access_time():
                             students.remove(name)
                             # print(students)
                             # curr_time = now.strftime("%H-%M-%S")
+                            
+                            f = open(curr_date + '.csv','a', newline='')
+                            lnwriter = csv.writer(f)
                             lnwriter.writerow([name,current_time])
 
 
