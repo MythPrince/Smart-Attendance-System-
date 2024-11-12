@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const VideoUpload = () => {
+const VideoUpload = () =>{
   const [file, setFile] = useState(null);
-  const [message, setMessage] = useState('');
+  const [message, setMessage] =useState('');
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
@@ -19,7 +19,7 @@ const VideoUpload = () => {
     formData.append('video', file);
 
     try {
-        const response = await axios.post('http://localhost:5000/upload', formData);
+        const response =await axios.post('http://localhost:5000/upload',formData);
 
       setMessage(response.data.message);
     } catch (error) {
