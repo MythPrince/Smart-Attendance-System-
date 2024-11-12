@@ -46,7 +46,7 @@ app.post('/upload', upload.single('video'), (req, res) => {
     const videoPath = path.join(__dirname, 'uploads', 'uploaded_video.mp4');
 
  
-    if (!fs.existsSync(videoPath)) {
+    if(!fs.existsSync(videoPath)) {
         return res.status(400).json({ message: 'Video file not found' });
     }
 
@@ -64,12 +64,12 @@ app.post('/upload', upload.single('video'), (req, res) => {
     });
 
     pythonProcess.on('close', (code) => {
-        if (code === 0) {
+        if(code ===0) {
             console.log('Python script executed successfully');
-            res.json({ message: 'Video processed successfully' });
-        } else {
+            res.json({ message: 'Video processed successfully'});
+        }else{
             console.error('Python script exited with code:', code);
-            res.status(500).json({ message: 'Failed to process video' });
+            res.status(500).json({ message: 'Failed to process video'});
         }
     });
 });
