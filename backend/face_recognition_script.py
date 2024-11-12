@@ -4,10 +4,10 @@ import numpy as np
 import pandas as pd
 import os
 from pymongo import MongoClient
-from datetime import datetime
+
 
 def func1(video_path):
-    # MongoDB setup
+    
     print("func1 started")
     client = MongoClient('mongodb://localhost:27017/')
     db = client['attendance']
@@ -46,8 +46,8 @@ def func1(video_path):
                 name = known_face_names[best_match_index]
                 if name not in recognized_faces:
                     recognized_faces.append(name)
-                    # Save to MongoDB
-                    collection.insert_one({'name': name, 'timestamp': datetime.now().isoformat()})
+                    
+                    collection.insert_one({'name': name})
                     print("savedToMongoDB")
     print("videoFinished")
     video_capture.release()
