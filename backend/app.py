@@ -18,7 +18,7 @@ if not os.path.exists(UPLOAD_FOLDER):
 def upload_video():
     try:
         if 'video' not in request.files:
-            return jsonify({'message':'No video file part in the request'}), 400
+            return jsonify({'message':'No video file part in the request'}),400
 
         video = request.files['video']
         if video.filename == '':
@@ -36,4 +36,4 @@ def upload_video():
         return jsonify({'message': 'Video uploaded successfully!'})
     except Exception as e:
         print("Upload Error:", str(e))
-        return jsonify({'message': 'Failed to upload video', 'error': str(e)}), 500
+        return jsonify({'message': 'Failed to upload video', 'error': str(e)}),500
