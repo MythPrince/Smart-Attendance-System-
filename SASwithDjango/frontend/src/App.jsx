@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import './App.css'
 
-import VideoUpload from './components/VideoUpload'
+import RecognizedFaces from './components/recognizedFaces'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -11,7 +11,7 @@ function App() {
     <>
       <div>
       <h1>Smart Attendance System</h1>
-      <VideoUpload />
+      <RecognizedFaces/>
     </div>
       
     </>

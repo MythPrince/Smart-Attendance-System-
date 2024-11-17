@@ -3,17 +3,16 @@ import face_recognition
 import numpy as np
 import pandas as pd
 import os
-import sys
 from pymongo import MongoClient
+import sys
 
-
-def func1(video_path):
-    
+def func1(video_path, session_id):
     print("func1 started")
     client = MongoClient('mongodb://localhost:27017/')
     db = client['attendance']
     collection = db['recognized_faces']
     print("mongoStarted")
+
     known_face_encodings = []
     known_face_names = []
     recognized_faces = []
@@ -27,6 +26,7 @@ def func1(video_path):
         name = os.path.splitext(image_name)[0]
         known_face_names.append(name)
     print("encodingDone")
+
     video_capture = cv2.VideoCapture(video_path)
     print("videoStarted")
     while video_capture.isOpened():
@@ -47,9 +47,9 @@ def func1(video_path):
                 name = known_face_names[best_match_index]
                 if name not in recognized_faces:
                     recognized_faces.append(name)
-                    
-                    collection.insert_one({'name': name})
-                    print("savedToMongoDB")
+                    collection.insert_one({'name': name, 'session_id': session_id})
+                    print(f"Saved {name} to MongoDB with session ID {session_id}")
+
     print("videoFinished")
     video_capture.release()
     recognized_faces = list(set(recognized_faces))
@@ -58,11 +58,8 @@ def func1(video_path):
     print("savedToCSV")
     print("Recognized faces saved to CSV and MongoDB.")
 
-if __name__ == "__main__":
-    import sys
-    if len(sys.argv) != 2:
-        print("Usage: python faceRecognitionScript.py <video_path>")
-        sys.exit(1)
+
     
-    video_path = sys.argv[1]
-    func1(video_path)
+video_path = sys.argv[1]
+session_id = sys.argv[2]
+func1(video_path, session_id)
