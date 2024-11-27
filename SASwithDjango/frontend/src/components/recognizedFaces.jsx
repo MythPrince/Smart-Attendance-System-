@@ -25,14 +25,22 @@ function RecognizedFaces() {
 
     try {
       alert("Video uploaded successfully and processing started.");
-      const uploadResponse = await axios.post('http://localhost:8000/api/upload/', formData);
+      const uploadResponse = await axios.post('http://localhost:8000/api/upload/', formData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          'Content-Type': 'multipart/form-data',
+        },
+      });
       const { session_id } = uploadResponse.data;
       setSessionId(session_id);
 
-      const facesResponse = await axios.get(`http://localhost:8000/api/recognized-faces/?session_id=${session_id}`);
+      const facesResponse = await axios.get(`http://localhost:8000/api/recognized-faces/?session_id=${session_id}`,{
+        headers: { Authorization: `Bearer ${localStorage.getItem("accessToken")}` },
+        params: { session_id },
+      });
       setFaces(facesResponse.data.recognized_faces);
     } catch (error) {
-      console.error('Error processing video:', error);
+      console.log('Error processing video:', error);
       alert("Failed to process video. Please try again.");
     } finally {
       setLoading(false);
@@ -41,6 +49,7 @@ function RecognizedFaces() {
 
   return (
     <div>
+      <h1>Smart Attendance System</h1>
       <input type="file" onChange={handleFileChange} accept="video/*" />
 
       <button onClick={handleGetRecognizedFaces} disabled={loading}>

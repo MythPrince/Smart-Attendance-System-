@@ -1,21 +1,27 @@
-import { useState } from 'react'
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import Signup from './components/signup';
+import Login from './components/login';
+import RecognizedFaces from './components/recognizedFaces';
 
-import './App.css'
-
-import RecognizedFaces from './components/recognizedFaces'
-
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    !!localStorage.getItem('accessToken')
+  );
 
   return (
-    <>
-      <div>
-      <h1>Smart Attendance System</h1>
-      <RecognizedFaces/>
-    </div>
-      
-    </>
-  )
-}
+    <Router>
+      <Routes>
+        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
+        <Route
+          path="/upload-video"
+          element={isAuthenticated ? <RecognizedFaces /> : <Navigate to="/login" />}
+        />
+      </Routes>
+    </Router>
+  );
+};
 
-export default App
+export default App;
