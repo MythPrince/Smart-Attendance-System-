@@ -87,6 +87,8 @@ class UploadVideoView(APIView):
             return Response({"error": str(e)}, status=500)
 
 class RecognizedFacesView(APIView):
+    permission_classes = [IsAuthenticated]
+
     def get(self,request,*args, **kwargs):
         session_id = request.query_params.get('session_id')
         if not session_id:

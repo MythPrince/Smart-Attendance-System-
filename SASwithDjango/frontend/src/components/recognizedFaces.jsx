@@ -48,7 +48,7 @@ function RecognizedFaces() {
   };
 
   return (
-    <div>
+    <div >
       <h1>Smart Attendance System</h1>
       <input type="file" onChange={handleFileChange} accept="video/*" />
 

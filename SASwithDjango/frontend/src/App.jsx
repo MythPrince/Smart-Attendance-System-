@@ -5,9 +5,7 @@ import Login from './components/login';
 import RecognizedFaces from './components/recognizedFaces';
 
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(
-    !!localStorage.getItem('accessToken')
-  );
+  const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem('accessToken'));
 
   return (
     <Router>
