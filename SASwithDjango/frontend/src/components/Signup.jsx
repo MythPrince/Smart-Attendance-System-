@@ -17,7 +17,7 @@ const Signup = () => {
     try {
       const response = await axios.post('http://127.0.0.1:8000/api/signup/', { username, password });
       setMessage(response.data.message);
-      setTimeout(() => navigate('/login'), 1500); // Redirect to login after 1.5 seconds
+      setTimeout(() => navigate('/login'), 1500); 
     } catch (error) {
       setMessage(error.response?.data?.error || 'Something went wrong.');
     }
