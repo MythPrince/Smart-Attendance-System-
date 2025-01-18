@@ -7,7 +7,7 @@ The *Smart Attendance System* is an automated attendance tracking solution using
 - Web-based interface for administrators to manage and view attendance records.
 - Data storage in both MongoDB database and CSV files for easy access and reporting.
 - Seamless integration between frontend and backend technologies.
-- User-friendly and scalable solution for educational institutions, businesses, and events.
+- User-friendly and scalable solution for educational institutions, businesses, and event.
 
 ---
 
