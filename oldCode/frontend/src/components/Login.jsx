@@ -72,7 +72,7 @@ const Login = ({ setIsAuthenticated }) => {
         </Button>
         <Button
           variant="outlined"
-          color="primary"
+          color="secondary"
           fullWidth
           style={{ marginTop: '10px' }}
           onClick={handleSignup}
@@ -80,7 +80,7 @@ const Login = ({ setIsAuthenticated }) => {
           Signup
         </Button>
       </form>
-      {message && <p style={{ color: 'black', marginTop: '10px' }}>{message}</p>}
+      {message && <p style={{ color: 'red', marginTop: '10px' }}>{message}</p>}
     </div>
   );
 };
