@@ -34,7 +34,7 @@ The Smart Attendance System automates the entire attendance process, eliminating
 3. *Face Recognition*: Detected faces are matched with a predefined list of students using face recognition algorithms.
 4. *Attendance Recording*: Once a match is found, the individual's attendance is automatically recorded.
 5. *Data Storage*: Attendance data is stored in both CSV files and MongoDB for later retrieval and reporting.
-6. *Admin Dashboard*: The React-based frontend provides an easy-to-use interface for administrators to view and manage attendance records.
+6. *Admin Dashboard*: The Django-based dashboard provides an easy-to-use interface for administrators to view and manage attendance records.
 7. *Report Generation*: Administrators can export attendance data and generate reports.
 
 ---
